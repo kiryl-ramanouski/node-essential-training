@@ -8,13 +8,23 @@ const questions = [
 
 const answers = [];
 
-const ask = (i) => {
+const ask = (i = 0) => {
     process.stdout.write(`\n ${questions[i]}`);
     process.stdout.write(` > `);
 }
 
-process.stdin.on("data", (data) => {
-    process.stdout.write(data.toString().trim());
-})
-
 ask(answers.length);
+
+process.stdin.on("data", (data) => {
+    answers.push(data.toString().trim());
+    if (answers.length < questions.length) {
+        ask(answers.length);
+    } else {
+        process.exit();
+    }
+});
+
+process.on("exit", () => {
+    process.stdout.write("\n");
+    process.stdout.write(`Go ${answers[1]} ${answers[0]} you can finish writing ${answers[2]} later`);
+});
