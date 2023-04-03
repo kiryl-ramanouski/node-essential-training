@@ -1,7 +1,12 @@
 const path = require("path");
+const util = require("util");
+const v8 = require("v8");
 
 const fileName = path.basename(__filename);
-console.log(fileName);
+util.log(fileName);
 
 const dirForUploads = path.join(__dirname, "www", "files", "uploads");
-console.log(dirForUploads);
+util.log(dirForUploads);
+
+const heapStatistics = v8.getHeapStatistics();
+util.log(heapStatistics);
