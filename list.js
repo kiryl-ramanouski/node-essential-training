@@ -1,15 +1,11 @@
 const fs = require("fs");
 
-let files = fs.readdirSync("./");
-
-fs.readdir("./", (err, files) => {
+fs.readFile("./readme.md", "utf-8", (err, data) => {
     if (err) {
         throw err;
     }
-    console.log("Reading files asynchronously with readdir:\n");
-    console.log(files);
+    console.log(`Async reading:\n ${data}`);
 });
 
-console.log("Reading files with readdirSync:\n");
-console.log(files);
-console.log("\n");
+let readmeSync = fs.readFileSync("./readme.md", "utf-8");
+console.log(`Sync reading:\n ${readmeSync}`);
