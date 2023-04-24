@@ -11,3 +11,11 @@ if (fs.existsSync("your-new-directory")) {
         }
     });
 }
+
+fs.rmdir("./folder-for-renaming/destination", (err) => {
+    if (err) {
+        throw err;
+    }
+
+    console.log("Destination removed");
+});
