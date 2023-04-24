@@ -21,3 +21,8 @@ fs.unlink("./folder-for-renaming/destination", (err) => {
 
     console.log("File deleted");
 });
+
+fs.readdirSync("./folder-for-renaming").forEach((file) => {
+    fs.renameSync(`./folder-for-renaming${file}`, `./your-new-directory${file}`);
+    console.log("All files were moved");
+});
